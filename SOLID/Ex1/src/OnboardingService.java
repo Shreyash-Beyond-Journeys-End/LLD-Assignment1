@@ -19,7 +19,7 @@ public class OnboardingService {
         String program = kv.getOrDefault("program", "");
 
         
-        boolean accepted = ValidateParsedInput.validate(name, email, phone, program);
+        boolean accepted = ValidateParsedInput.validate(kv);
         if(accepted == false) return;
 
         String id = IdUtil.nextStudentId(db.count());

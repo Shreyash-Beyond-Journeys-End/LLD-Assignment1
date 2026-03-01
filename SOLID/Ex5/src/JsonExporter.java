@@ -9,13 +9,16 @@ public class JsonExporter extends Exporter {
     public String getContentType() { return "application/json"; }
 
     @Override
+    protected String encodeData(String text) {
+        if (text == null) return "";
+        return text.replace("\"", "\\\"");
+    }
+
+    @Override
     protected ExportResult generateExport(ExportRequest req) {
-        String json = "{\"title\":\"" + escape(req.title) + "\",\"body\":\"" + escape(req.body) + "\"}";
+        String json = "{\"title\":\"" + encodeData(req.title) + "\",\"body\":\"" + encodeData(req.body) + "\"}";
         return new ExportResult(getContentType(), json.getBytes(StandardCharsets.UTF_8));
     }
 
-    private String escape(String s) {
-        if (s == null) return "";
-        return s.replace("\"", "\\\"");
-    }
+    
 }

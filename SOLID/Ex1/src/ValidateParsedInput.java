@@ -1,9 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ValidateParsedInput {
-    public static boolean validate(String name , String email , String phone , String program){
+    public static boolean validate(Map<String,String> kv){
         List<String> errors = new ArrayList<>();
+
+        String name = kv.getOrDefault("name", "");
+        String email = kv.getOrDefault("email", "");
+        String phone = kv.getOrDefault("phone", "");
+        String program = kv.getOrDefault("program", "");
+
         if (name.isBlank()) errors.add("name is required");
         if (email.isBlank() || !email.contains("@")) errors.add("email is invalid");
         if (phone.isBlank() || !phone.chars().allMatch(Character::isDigit)) errors.add("phone is invalid");
