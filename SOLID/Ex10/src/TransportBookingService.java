@@ -1,9 +1,7 @@
 public class TransportBookingService {
     // DIP violation: direct concretes
-    public void book(TripRequest req) {
-        DistanceCalculator dist = new DistanceCalculator();
-        DriverAllocator alloc = new DriverAllocator();
-        PaymentGateway pay = new PaymentGateway();
+    public void book(TripRequest req , IDistanceCalculator dist , IDriverAllocator alloc , IPaymentGateway pay) {
+       
 
         double km = dist.km(req.from, req.to);
         System.out.println("DistanceKm=" + km);
