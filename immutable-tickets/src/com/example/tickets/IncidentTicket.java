@@ -17,17 +17,17 @@ import java.util.List;
  */
 public class IncidentTicket {
 
-    private String id;
-    private String reporterEmail;
-    private String title;
+    private final String id;
+    private final String reporterEmail;
+    private final String title;
 
-    private String description;
-    private String priority;       // LOW, MEDIUM, HIGH, CRITICAL
-    private List<String> tags;     // mutable leak
-    private String assigneeEmail;
-    private boolean customerVisible;
-    private Integer slaMinutes;    // optional
-    private String source;         // e.g. "CLI", "WEBHOOK", "EMAIL"
+    private final String description;
+    private final String priority;       // LOW, MEDIUM, HIGH, CRITICAL
+    private final List<String> tags;     // mutable leak
+    private final String assigneeEmail;
+    private final boolean customerVisible;
+    private final Integer slaMinutes;    // optional
+    private final String source;         // e.g. "CLI", "WEBHOOK", "EMAIL"
 
     private IncidentTicket(Builder builder) {
         this.id = builder.id;
